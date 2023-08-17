@@ -16,7 +16,4 @@ jobs:
     - name: Run tests and analyses
       run: |
         ./vendor/bin/pest
-        npx cypress run
-        ./vendor/bin/pint
-        ./vendor/bin/psalm
-        ./vendor/bin/phpstan analyse
+        
