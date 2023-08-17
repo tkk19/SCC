@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: composer install && npm install
+
+    - name: Run tests and analyses
+      run: |
+        ./vendor/bin/pest
+        npx cypress run
+        ./vendor/bin/pint
+        ./vendor/bin/psalm
+        ./vendor/bin/phpstan analyse
